@@ -6,4 +6,4 @@ const catchAsyncError = (fn) => {
   };
 };
 
-export default catchAsyncError;
+module.exports = catchAsyncError;

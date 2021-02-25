@@ -1,16 +1,16 @@
-import mongoose from 'mongoose';
-import validator from 'validator';
+const mongoose = require("mongoose");
+const validator = require("validator");
 
 const resourceScheema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'Title is required'],
+      required: [true, "Title is required"],
     },
     url: {
       type: String,
-      required: [true, 'An URL is required'],
-      validate: [validator.isURL, 'Please provide a valid URL'],
+      required: [true, "An URL is required"],
+      validate: [validator.isURL, "Please provide a valid URL"],
     },
     tag: {
       type: String,
@@ -18,7 +18,7 @@ const resourceScheema = mongoose.Schema(
     },
     subject: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Subject',
+      ref: "Subject",
     },
   },
   {
@@ -26,6 +26,6 @@ const resourceScheema = mongoose.Schema(
   }
 );
 
-const Resource = mongoose.model('Resource', resourceScheema);
+const Resource = mongoose.model("Resource", resourceScheema);
 
-export default Resource;
+module.exports = Resource;

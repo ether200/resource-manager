@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "\"Video resources manager\"",
   "main": "server.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "\"Ivan\"",
   "license": "ISC",

@@ -1,19 +1,19 @@
-import express from 'express';
-import { protect } from '../controllers/userController.js';
-import {
+const express = require("express");
+const { protect } = require("../controllers/userController");
+const {
   createSubject,
   deleteSubject,
   findSubject,
   findSubjectByUser,
   updateSubject,
-} from '../controllers/subjectController.js';
+} = require("../controllers/subjectController");
 
 const router = express.Router();
 
-router.post('/', protect, createSubject);
-router.get('/', protect, findSubjectByUser);
-router.get('/:id', protect, findSubject);
-router.delete('/:id', protect, deleteSubject);
-router.put('/:id', protect, updateSubject);
+router.post("/", protect, createSubject);
+router.get("/", protect, findSubjectByUser);
+router.get("/:id", protect, findSubject);
+router.delete("/:id", protect, deleteSubject);
+router.put("/:id", protect, updateSubject);
 
-export default router;
+module.exports = router;

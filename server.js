@@ -1,17 +1,14 @@
-import express from "express";
-import cors from "cors";
-import path from "path";
-import dotenv from "dotenv";
-import ApiError from "./utils/ApiError.js";
-import catchAsyncError from "./utils/catchAsyncError.js";
-import globalErrorHandler from "./controllers/errorController.js";
-import userRouter from "./routes/userRouter.js";
-import subjectRouter from "./routes/subjectRouter.js";
-import resourceRouter from "./routes/resourceRouter.js";
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const globalErrorHandler = require("./controllers/errorController");
+const userRouter = require("./routes/userRouter");
+const subjectRouter = require("./routes/subjectRouter");
+const resourceRouter = require("./routes/resourceRouter");
+const connectDatabase = require("./config/database");
 
-import connectDatabase from "./config/database.js";
-
-dotenv.config();
 connectDatabase();
 const app = express();
 app.use(cors());
@@ -21,14 +18,15 @@ app.use("/api/users", userRouter);
 app.use("/api/subjects", subjectRouter);
 app.use("/api/resources", resourceRouter);
 
-app.all(
-  "*",
-  catchAsyncError(async (req, res, next) => {
-    throw new ApiError(`Can not find ${req.originalUrl} on the server!`, 404);
-  })
-);
-
 app.use(globalErrorHandler);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
