@@ -67,7 +67,7 @@ export const deleteResource = (resourceId: string) => async (
 ) => {
   try {
     dispatch({ type: DELETE_RESOURCE_REQUEST });
-    await axiosConfig.delete(`api/resources/${resourceId}`, {
+    await axiosConfig.delete(`/api/resources/${resourceId}`, {
       headers: authConfig(),
     });
     dispatch({ type: DELETE_RESOURCE_SUCCESS, payload: resourceId });
