@@ -12,6 +12,13 @@ import FormInput from "../FormInput";
 import { LoginFormWrapper } from "./LoginForm.styles";
 import { ErrorIcon } from "../../styles/Icons.Styles";
 
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Input,
+} from "@chakra-ui/react";
+
 export type LogFormValues = {
   email: string;
   password: string;
@@ -46,7 +53,19 @@ const LoginForm: React.FC = () => {
         </span>
       )}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput
+        <FormControl>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <Input id="email" name="email" type="text" ref={register} />
+          {errors.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input id="password" name="password" type="password" ref={register} />
+          {errors.password && (
+            <FormErrorMessage>{errors.password}</FormErrorMessage>
+          )}
+        </FormControl>
+        {/* <FormInput
           id="email"
           name="email"
           type="text"
@@ -61,7 +80,7 @@ const LoginForm: React.FC = () => {
           label="Password"
           register={register}
           errors={errors.password}
-        />
+        /> */}
         <button className="btn" type="submit" disabled={loading}>
           {!loading ? "Next" : "Loading..."}
         </button>

@@ -1,3 +1,6 @@
+import { Stack, Box } from "@chakra-ui/react";
+import Background from "../images/background.jpg";
+
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,9 +30,15 @@ const Login: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Wrapper>
+    <Stack direction="row" width="100%" minH="100vh">
       <LoginForm />
-      <div className="hero">
+      <Box
+        bgImage={`url(${Background})`}
+        bgPosition="cover"
+        bgRepeat="no-repeat"
+        width="100%"
+      ></Box>
+      {/* <div className="hero">
         <div className="welcome">
           <h1>Welcome</h1>
           <h4>
@@ -37,8 +46,8 @@ const Login: React.FC = () => {
           </h4>
           <h4>We got you!</h4>
         </div>
-      </div>
-    </Wrapper>
+      </div> */}
+    </Stack>
   );
 };
 
