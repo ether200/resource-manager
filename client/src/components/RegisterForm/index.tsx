@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterSchema } from "../../yup";
@@ -9,8 +9,8 @@ import { registerLogUser } from "../../redux/actions/userActions";
 import { RootStore } from "../../redux/store";
 import FormInput from "../FormInput";
 
-import { RegisterFormWrapper } from "./RegisterForm.styles";
-import { ErrorIcon } from "../../styles/Icons.Styles";
+import { Box, Heading, VStack, Button, Text, Link } from "@chakra-ui/react";
+import ErrorBadge from "../ErrorBadge";
 
 export type RegisterFormValues = {
   name: string;
@@ -38,57 +38,97 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <RegisterFormWrapper>
-      <h2>Register your account</h2>
-      {error && (
-        <span className="form-error">
-          <ErrorIcon /> {error}
-        </span>
-      )}
+    <Box
+      minW={320}
+      width={425}
+      bgColor={"white"}
+      paddingY={8}
+      paddingX={4}
+      borderRadius="lg"
+      boxShadow="lg"
+    >
+      <Heading
+        marginBottom={8}
+        size="lg"
+        textAlign="center"
+        color="primary.600"
+      >
+        Register your account
+      </Heading>
+
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput
-          id="name"
-          name="name"
-          type="text"
-          label="Name"
-          register={register}
-          errors={errors.name}
-        />
+        <VStack spacing={4}>
+          {error && <ErrorBadge message={error} />}
+          <FormInput
+            id="name"
+            name="name"
+            type="text"
+            label="Name"
+            register={register}
+            errors={errors.name}
+            invalid={errors.name ? true : false}
+            required
+          />
 
-        <FormInput
-          id="email"
-          name="email"
-          type="text"
-          label="Email"
-          register={register}
-          errors={errors.email}
-        />
+          <FormInput
+            id="email"
+            name="email"
+            type="text"
+            label="Email"
+            register={register}
+            errors={errors.email}
+            invalid={errors.email ? true : false}
+            required
+          />
 
-        <FormInput
-          id="password"
-          name="password"
-          type="password"
-          label="Password"
-          register={register}
-          errors={errors.password}
-        />
+          <FormInput
+            id="password"
+            name="password"
+            type="password"
+            label="Password"
+            register={register}
+            errors={errors.password}
+            invalid={errors.password ? true : false}
+            required
+          />
 
-        <FormInput
-          id="passwordConfirm"
-          name="passwordConfirm"
-          type="password"
-          label="Confirm Password"
-          register={register}
-          errors={errors.passwordConfirm}
-        />
-        <button className="btn" type="submit" disabled={loading}>
-          {!loading ? "register" : "loading..."}
-        </button>
-        <p>
-          Do you have an account? <Link to="/">Login</Link>
-        </p>
+          <FormInput
+            id="passwordConfirm"
+            name="passwordConfirm"
+            type="password"
+            label="Confirm Password"
+            register={register}
+            errors={errors.passwordConfirm}
+            invalid={errors.passwordConfirm ? true : false}
+            required
+          />
+          <Button
+            variant="solid"
+            size="md"
+            isLoading={loading}
+            type="submit"
+            width="100%"
+            colorScheme="primary"
+          >
+            Register
+          </Button>
+          <Text alignSelf="start" fontSize="md" color="gray.500">
+            Do you have an account?{" "}
+            <Link
+              as={RouterLink}
+              fontWeight="semibold"
+              color="primary.600"
+              _hover={{
+                color: "primary.700",
+              }}
+              to="/"
+            >
+              Login
+            </Link>
+          </Text>
+        </VStack>
       </form>
-    </RegisterFormWrapper>
+    </Box>
   );
 };
 

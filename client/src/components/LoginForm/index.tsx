@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../../yup";
@@ -8,16 +8,9 @@ import { registerLogUser } from "../../redux/actions/userActions";
 
 import { RootStore } from "../../redux/store";
 import FormInput from "../FormInput";
+import ErrorBadge from "../ErrorBadge";
 
-import { LoginFormWrapper } from "./LoginForm.styles";
-import { ErrorIcon } from "../../styles/Icons.Styles";
-
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Heading, VStack, Button, Text, Link } from "@chakra-ui/react";
 
 export type LogFormValues = {
   email: string;
@@ -40,55 +33,66 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <LoginFormWrapper>
-      <h2>Log in to your account</h2>
-      {error && (
-        <span className="form-error">
-          <ErrorIcon /> {error}
-        </span>
-      )}
-      {authError && (
-        <span className="form-error">
-          <ErrorIcon /> {authError}
-        </span>
-      )}
+    <Box
+      minWidth={275}
+      paddingY={8}
+      paddingX={4}
+      height="100%"
+      width={{ base: "375px", md: "400px" }}
+      margin="auto"
+    >
+      <Heading marginY={8} size="lg" textAlign="center" color="primary.600">
+        Log in to your account
+      </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl>
-          <FormLabel htmlFor="email">Email</FormLabel>
-          <Input id="email" name="email" type="text" ref={register} />
-          {errors.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="password">Password</FormLabel>
-          <Input id="password" name="password" type="password" ref={register} />
-          {errors.password && (
-            <FormErrorMessage>{errors.password}</FormErrorMessage>
-          )}
-        </FormControl>
-        {/* <FormInput
-          id="email"
-          name="email"
-          type="text"
-          label="Email"
-          register={register}
-          errors={errors.email}
-        />
-        <FormInput
-          id="password"
-          type="password"
-          name="password"
-          label="Password"
-          register={register}
-          errors={errors.password}
-        /> */}
-        <button className="btn" type="submit" disabled={loading}>
-          {!loading ? "Next" : "Loading..."}
-        </button>
-        <p>
-          Don't you have an account? <Link to="/register">Sign up</Link>
-        </p>
+        <VStack spacing={4}>
+          {error && <ErrorBadge message={error} />}
+          {authError && <ErrorBadge message={authError} />}
+          <FormInput
+            id="email"
+            name="email"
+            type="text"
+            label="Email"
+            invalid={errors.email ? true : false}
+            register={register}
+            errors={errors.email}
+          />
+          <FormInput
+            id="password"
+            type="password"
+            name="password"
+            label="Password"
+            register={register}
+            invalid={errors.email ? true : false}
+            errors={errors.password}
+          />
+          <Button
+            variant="solid"
+            size="md"
+            isLoading={loading}
+            type="submit"
+            width="100%"
+            colorScheme="primary"
+          >
+            Log In
+          </Button>
+          <Text alignSelf="start" fontSize="md" color="gray.500">
+            Don't you have an account?{" "}
+            <Link
+              as={RouterLink}
+              fontWeight="semibold"
+              color="primary.600"
+              _hover={{
+                color: "primary.700",
+              }}
+              to="/register"
+            >
+              Sign up
+            </Link>
+          </Text>
+        </VStack>
       </form>
-    </LoginFormWrapper>
+    </Box>
   );
 };
 

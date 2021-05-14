@@ -9,7 +9,6 @@ import { resetSubjectState } from "../redux/actions/subjectActions";
 import { resetResourceState } from "../redux/actions/resourceActions";
 import { RootStore } from "../redux/store";
 
-import Wrapper from "../styles/Login.styles";
 import LoginForm from "../components/LoginForm";
 
 const Login: React.FC = () => {
@@ -30,13 +29,18 @@ const Login: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Stack direction="row" width="100%" minH="100vh">
+    <Stack
+      direction={{ base: "column-reverse", md: "row" }}
+      width="100%"
+      height="100vh"
+    >
       <LoginForm />
       <Box
         bgImage={`url(${Background})`}
         bgPosition="cover"
         bgRepeat="no-repeat"
-        width="100%"
+        flex={{ base: "auto", md: 1 }}
+        height={{ base: "100px", md: "100%" }}
       ></Box>
       {/* <div className="hero">
         <div className="welcome">

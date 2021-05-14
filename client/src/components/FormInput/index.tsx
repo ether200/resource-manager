@@ -1,15 +1,22 @@
-import { ValidationRule, UseFormMethods } from 'react-hook-form';
-import { ErrorIcon } from '../../styles/Icons.Styles';
+import { ValidationRule, UseFormMethods } from "react-hook-form";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Input,
+} from "@chakra-ui/react";
 
 interface InputProps
-  extends Partial<Pick<UseFormMethods, 'register' | 'errors'>> {
+  extends Partial<Pick<UseFormMethods, "register" | "errors">> {
   rules?: ValidationRule;
   id: string;
   label: string;
   name: string;
+  invalid?: boolean;
+  required?: boolean;
   placeholder?: string;
   defaultValue?: string | undefined;
-  type: 'text' | 'email' | 'password';
+  type: "text" | "email" | "password";
 }
 
 const FormInput: React.FC<InputProps> = ({
@@ -17,18 +24,35 @@ const FormInput: React.FC<InputProps> = ({
   errors,
   label,
   id,
+  invalid,
+  required,
   ...inputProps
 }): JSX.Element => {
   return (
-    <div className='form-control'>
-      <label htmlFor={id}>{label}</label>
-      <input ref={register} id={id} {...inputProps} />
-      {errors && (
-        <span className='form-error'>
-          <ErrorIcon /> {errors.message}
-        </span>
-      )}
-    </div>
+    <FormControl id={id} isInvalid={invalid} isRequired={required}>
+      <FormLabel htmlFor={id} color="gray.400">
+        {label}
+      </FormLabel>
+      <Input
+        id={id}
+        ref={register}
+        {...inputProps}
+        focusBorderColor="primary.400"
+        errorBorderColor="red.300"
+      />
+      <FormErrorMessage fontSize="md" fontWeight="semibold">
+        {errors && errors.message}
+      </FormErrorMessage>
+    </FormControl>
+    // <div className='form-control'>
+    //   <label htmlFor={id}>{label}</label>
+    //   <input ref={register} id={id} {...inputProps} />
+    //   {errors && (
+    //     <span className='form-error'>
+    //       <ErrorIcon /> {errors.message}
+    //     </span>
+    //   )}
+    // </div>
   );
 };
 
