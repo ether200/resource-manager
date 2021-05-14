@@ -1,38 +1,58 @@
 import { useSelector } from "react-redux";
-import { SidebarWrapper } from "./Sidebar.styles";
-import { CloseIcon } from "../../styles/Icons.Styles";
-import { SidebarNavProps } from "../../pages/Subjects";
 import { RootStore } from "../../redux/store";
 
 import Spinner from "../Spinner";
 import SubjectForm from "../SubjectForm";
 import Subjects from "../Subjects";
 
-const Sidebar: React.FC<SidebarNavProps> = ({
-  isSidebarOpen,
-  setIsSidebarOpen,
-}) => {
+import {
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Heading,
+} from "@chakra-ui/react";
+
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const Sidebar: React.FC<Props> = ({ isOpen, onClose }) => {
   const { subjectLoading } = useSelector(
     (state: RootStore) => state.subjectState
   );
 
   return (
-    <SidebarWrapper className={isSidebarOpen ? "open" : ""}>
-      <div className="buttonWrapper">
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-          <CloseIcon />
-        </button>
-      </div>
-      {!subjectLoading ? (
-        <>
-          <SubjectForm />
-          <hr />
-          <Subjects />
-        </>
-      ) : (
-        <Spinner />
-      )}
-    </SidebarWrapper>
+    <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerCloseButton />
+        <DrawerHeader>
+          <Heading
+            fontSize="2xl"
+            marginTop={8}
+            marginBottom={4}
+            textAlign="center"
+            color="primary.600"
+          >
+            Subjects
+          </Heading>
+        </DrawerHeader>
+        <DrawerBody>
+          {!subjectLoading ? (
+            <>
+              <SubjectForm />
+              <Subjects />
+            </>
+          ) : (
+            <Spinner />
+          )}
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
   );
 };
 

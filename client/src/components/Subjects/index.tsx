@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllSubjects } from '../../redux/actions/subjectActions';
-import { SubjectInterface } from '../../redux/actions/subjectActionsTypes';
-import { RootStore } from '../../redux/store';
-import Subject from './Subject';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSubjects } from "../../redux/actions/subjectActions";
+import { SubjectInterface } from "../../redux/actions/subjectActionsTypes";
+import { RootStore } from "../../redux/store";
+import Subject from "./Subject";
+
+import { Heading, VStack } from "@chakra-ui/react";
 
 const Subjects = () => {
   const dispatch = useDispatch();
@@ -17,11 +19,11 @@ const Subjects = () => {
   }, [authorized, dispatch]);
 
   return (
-    <ul>
+    <VStack spacing={4} marginY={8}>
       {subjects.map((subject: SubjectInterface) => (
         <Subject key={subject._id} name={subject.name} _id={subject._id} />
       ))}
-    </ul>
+    </VStack>
   );
 };
 
