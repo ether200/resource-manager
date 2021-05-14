@@ -1,11 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { logoutUser } from '../../redux/actions/userActions';
-import { resetSelectedSubject } from '../../redux/actions/subjectActions';
-import { SidebarNavProps } from '../../pages/Subjects';
+import { useDispatch } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
+import { logoutUser } from "../../redux/actions/userActions";
+import { resetSelectedSubject } from "../../redux/actions/subjectActions";
+import { SidebarNavProps } from "../../pages/Subjects";
 
-import { NavbarWrapper } from './Navbar.styles';
-import { ThreeBars } from '../../styles/Icons.Styles';
+import { NavbarWrapper } from "./Navbar.styles";
+import { ThreeBars } from "../../styles/Icons.Styles";
+import { BsFolderPlus } from "react-icons/bs";
+
+import { Stack, Button, Link } from "@chakra-ui/react";
 
 const Navbar: React.FC<SidebarNavProps> = ({
   setIsSidebarOpen,
@@ -14,21 +17,44 @@ const Navbar: React.FC<SidebarNavProps> = ({
   const dispatch = useDispatch();
 
   return (
-    <NavbarWrapper>
-      <div className='navbar-center'>
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-          <ThreeBars />
-        </button>
-        <div className='links'>
-          <Link to='/subjects' onClick={() => dispatch(resetSelectedSubject)}>
-            Home
-          </Link>
-          <Link to='/' onClick={() => dispatch(logoutUser)}>
-            Logout
-          </Link>
-        </div>
-      </div>
-    </NavbarWrapper>
+    <Stack
+      direction="row"
+      bgColor="primary.600"
+      height={75}
+      alignItems="center"
+      justifyContent="space-between"
+      paddingX={8}
+    >
+      {/* ADD NO ME LA CONTAINER */}
+      <Button
+        size="md"
+        bgColor="secondary.400"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        leftIcon={<BsFolderPlus />}
+      >
+        Subjects
+      </Button>
+      <Stack direction="row" spacing={4}>
+        <Link
+          to="/subjects"
+          as={RouterLink}
+          fontWeight="semibold"
+          color="white"
+          onClick={() => dispatch(resetSelectedSubject)}
+        >
+          Home
+        </Link>
+        <Link
+          to="/"
+          color="white"
+          fontWeight="semibold"
+          as={RouterLink}
+          onClick={() => dispatch(logoutUser)}
+        >
+          Logout
+        </Link>
+      </Stack>
+    </Stack>
   );
 };
 

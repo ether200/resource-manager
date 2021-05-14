@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSubject } from "../redux/actions/subjectActions";
 import { RootStore } from "../redux/store";
 
-import Wrapper from "../styles/Subject.styles";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import WelcomePage from "../components/WelcomePage";
 import AppPage from "../components/AppPage";
 import ResourceForm from "../components/ResourceForm";
 import Modal from "../components/Modal";
+
+import { Stack } from "@chakra-ui/react";
 
 type MatchParams = {
   id: string;
@@ -42,7 +43,7 @@ const Subjects: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   }, [keyword, authorized, dispatch]);
 
   return (
-    <Wrapper>
+    <Stack minHeight="100vh" direction="column">
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
@@ -56,7 +57,7 @@ const Subjects: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
         <ResourceForm setIsModalOpen={setIsModalOpen} />
       </Modal>
-    </Wrapper>
+    </Stack>
   );
 };
 
