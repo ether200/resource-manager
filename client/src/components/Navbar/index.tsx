@@ -6,7 +6,13 @@ import { resetSelectedSubject } from "../../redux/actions/subjectActions";
 
 import { FaFolderPlus } from "react-icons/fa";
 
-import { Stack, Button, Link, useDisclosure } from "@chakra-ui/react";
+import {
+  Stack,
+  Button,
+  Link,
+  useDisclosure,
+  Container,
+} from "@chakra-ui/react";
 import Sidebar from "../Sidebar";
 
 const Navbar: React.FC = () => {
@@ -21,38 +27,45 @@ const Navbar: React.FC = () => {
         bgColor="primary.600"
         height={70}
         alignItems="center"
-        justifyContent="space-between"
-        paddingX={8}
+        width="100%"
       >
         {/* ADD NO ME LA CONTAINER */}
-        <Button
-          size="md"
-          bgColor="secondary.400"
-          onClick={onOpen}
-          leftIcon={<FaFolderPlus />}
+        <Container
+          maxW="container.xl"
+          height="100%"
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
         >
-          Subjects
-        </Button>
-        <Stack direction="row" spacing={4}>
-          <Link
-            to="/subjects"
-            as={RouterLink}
-            fontWeight="semibold"
-            color="white"
-            onClick={() => dispatch(resetSelectedSubject)}
+          <Button
+            size="md"
+            bgColor="secondary.400"
+            onClick={onOpen}
+            leftIcon={<FaFolderPlus />}
           >
-            Home
-          </Link>
-          <Link
-            to="/"
-            color="white"
-            fontWeight="semibold"
-            as={RouterLink}
-            onClick={() => dispatch(logoutUser)}
-          >
-            Logout
-          </Link>
-        </Stack>
+            Subjects
+          </Button>
+          <Stack direction="row" spacing={4}>
+            <Link
+              to="/subjects"
+              as={RouterLink}
+              fontWeight="semibold"
+              color="white"
+              onClick={() => dispatch(resetSelectedSubject)}
+            >
+              Home
+            </Link>
+            <Link
+              to="/"
+              color="white"
+              fontWeight="semibold"
+              as={RouterLink}
+              onClick={() => dispatch(logoutUser)}
+            >
+              Logout
+            </Link>
+          </Stack>
+        </Container>
       </Stack>
       <Sidebar isOpen={isOpen} onClose={onClose} />
     </>

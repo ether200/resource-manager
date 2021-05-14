@@ -13,6 +13,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Heading,
+  Box,
 } from "@chakra-ui/react";
 
 type Props = {
@@ -48,7 +49,14 @@ const Sidebar: React.FC<Props> = ({ isOpen, onClose }) => {
               <Subjects />
             </>
           ) : (
-            <Spinner />
+            <Box
+              height="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Spinner />
+            </Box>
           )}
         </DrawerBody>
       </DrawerContent>

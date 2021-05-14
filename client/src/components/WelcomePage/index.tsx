@@ -1,26 +1,48 @@
-import { useSelector } from 'react-redux';
-import { WelcomeWrapper } from './Welcome.styles';
-import { RootStore } from '../../redux/store';
-import Spinner from '../Spinner';
-import Image from '../../images/home.svg';
+import { useSelector } from "react-redux";
+import { RootStore } from "../../redux/store";
+import Image from "../../images/home.svg";
+import Spinner from "../Spinner";
+
+import {
+  Container,
+  Image as ChakraImage,
+  Heading,
+  Text,
+  VStack,
+  Box,
+} from "@chakra-ui/react";
 
 const WelcomeMessage = () => {
   const { user, loading } = useSelector((state: RootStore) => state.userState);
 
   return (
-    <>
-      {user && !loading ? (
-        <WelcomeWrapper>
-          <section>
-            <h1>Welcome {user.name}</h1>
-            <h4>Start by picking or making a new subject</h4>
-            <img src={Image} alt='Welcome' />
-          </section>
-        </WelcomeWrapper>
-      ) : (
-        <Spinner />
-      )}
-    </>
+    <Box width="100%" flex={1} display="flex" alignItems="center">
+      <Container maxW="container.xl" marginX="auto">
+        <VStack>
+          {user && !loading ? (
+            <>
+              <Heading size="2xl" color="primary.600" marginY={4}>
+                Welcome{" "}
+                <Text as="span" textAlign="center" color="secondary.400">
+                  {user.name}
+                </Text>
+              </Heading>
+              <Text
+                fontWeight="semibold"
+                color="gray.500"
+                fontSize="xl"
+                textAlign="center"
+              >
+                Start by picking or making a new subject
+              </Text>
+              <ChakraImage src={Image} alt="Welcome" boxSize="lg" />{" "}
+            </>
+          ) : (
+            <Spinner />
+          )}
+        </VStack>
+      </Container>
+    </Box>
   );
 };
 
