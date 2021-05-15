@@ -8,6 +8,20 @@ import {
 import { ResourceCard } from "./Resources.styles";
 import { EditIcon, TrashIcon } from "../../styles/Icons.Styles";
 
+import { HiHashtag } from "react-icons/hi";
+import { FiEdit, FiTrash } from "react-icons/fi";
+
+import {
+  Box,
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  Stack,
+  IconButton,
+  StackDivider,
+  Heading,
+} from "@chakra-ui/react";
+
 type Props = {
   _id: string;
   title: string;
@@ -46,23 +60,68 @@ const Resource: React.FC<Props> = ({
   };
 
   return (
-    <ResourceCard>
-      <div className="video-wrapper">
+    <Stack
+      direction="column"
+      padding={4}
+      boxShadow="xl"
+      spacing={4}
+      divider={<StackDivider />}
+    >
+      <Box width="100%" height="280px">
         <ReactPlayer url={url} width="100%" height="100%" controls={true} />
-      </div>
-      <h4>{title}</h4>
-      <div className="content">
-        <div className="tag">{tag && "#" + tag}</div>
-        <div className="icons">
-          <button>
+      </Box>
+      <Heading size="md" color="gray.500" textAlign="center">
+        {title}
+      </Heading>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        width="100%"
+      >
+        <Box>
+          <Tag
+            size="md"
+            variant="subtle"
+            bgColor="primary.600"
+            color="white"
+            textTransform="uppercase"
+          >
+            <TagLeftIcon boxSize="14px" as={HiHashtag} />
+            <TagLabel>{tag}</TagLabel>
+          </Tag>
+        </Box>
+        <Stack
+          direction="row"
+          width="100%"
+          alignItems="center"
+          justifyContent="flex-end"
+        >
+          <IconButton
+            variant="outline"
+            size="sm"
+            colorScheme="twitter"
+            aria-label="Edit resource"
+            icon={<FiEdit />}
+            onClick={() => editHandler(_id)}
+          />
+          <IconButton
+            size="sm"
+            variant="outline"
+            colorScheme="twitter"
+            aria-label="Edit resource"
+            icon={<FiTrash />}
+            onClick={() => deleteHandler(_id)}
+          />
+        </Stack>
+      </Stack>
+      {/* <button>
             <EditIcon onClick={() => editHandler(_id)} />
           </button>
           <button onClick={() => deleteHandler(_id)}>
             <TrashIcon />
-          </button>
-        </div>
-      </div>
-    </ResourceCard>
+          </button> */}
+    </Stack>
   );
 };
 
