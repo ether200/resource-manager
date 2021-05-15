@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
-import { ResourceWrapper } from "./Resources.styles";
 import { ModalProps } from "../../pages/Subjects";
 import { RootStore } from "../../redux/store";
 
-import { SimpleGrid, Container } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 import Resource from "./Resource";
 
@@ -11,7 +10,7 @@ const Resources: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   const { resources } = useSelector((state: RootStore) => state.resourceState);
 
   return (
-    <SimpleGrid minChildWidth="370px" spacing="30px" paddingY={4}>
+    <SimpleGrid minChildWidth="310px" spacing="24px" paddingY={4}>
       {resources.map((resource) => (
         <Resource
           key={resource._id}

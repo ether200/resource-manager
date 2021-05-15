@@ -70,7 +70,7 @@ const Resource: React.FC<Props> = ({
       <Box width="100%" height="280px">
         <ReactPlayer url={url} width="100%" height="100%" controls={true} />
       </Box>
-      <Heading size="md" color="gray.500" textAlign="center">
+      <Heading size="md" color="primary.800" textAlign="center">
         {title}
       </Heading>
       <Stack
@@ -83,7 +83,7 @@ const Resource: React.FC<Props> = ({
           <Tag
             size="md"
             variant="subtle"
-            bgColor="primary.600"
+            bgColor="primary.400"
             color="white"
             textTransform="uppercase"
           >

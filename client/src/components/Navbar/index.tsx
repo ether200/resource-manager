@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
     <>
       <Stack
         direction="row"
-        bgColor="primary.600"
+        bgColor="primary.800"
         height={70}
         alignItems="center"
         width="100%"
@@ -38,8 +38,8 @@ const Navbar: React.FC = () => {
           justifyContent="space-between"
         >
           <Button
-            size="md"
-            bgColor="secondary.400"
+            size="sm"
+            bgColor="primary.400"
             onClick={onOpen}
             leftIcon={<FaFolderPlus />}
           >

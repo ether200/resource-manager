@@ -39,8 +39,7 @@ const RegisterForm: React.FC = () => {
 
   return (
     <Box
-      minW={320}
-      width={425}
+      width={{ base: "300px", sm: "430px" }}
       bgColor={"white"}
       paddingY={8}
       paddingX={4}
@@ -51,7 +50,7 @@ const RegisterForm: React.FC = () => {
         marginBottom={8}
         size="lg"
         textAlign="center"
-        color="primary.600"
+        color="primary.800"
       >
         Register your account
       </Heading>
@@ -117,9 +116,9 @@ const RegisterForm: React.FC = () => {
             <Link
               as={RouterLink}
               fontWeight="semibold"
-              color="primary.600"
+              color="primary.800"
               _hover={{
-                color: "primary.700",
+                color: "primary.900",
               }}
               to="/"
             >

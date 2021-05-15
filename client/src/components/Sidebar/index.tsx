@@ -37,7 +37,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, onClose }) => {
             marginTop={8}
             marginBottom={4}
             textAlign="center"
-            color="primary.600"
+            color="primary.800"
           >
             Subjects
           </Heading>

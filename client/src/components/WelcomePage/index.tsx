@@ -21,21 +21,25 @@ const WelcomeMessage = () => {
         <VStack>
           {user && !loading ? (
             <>
-              <Heading size="2xl" color="primary.600" marginY={4}>
+              <Heading size="2xl" color="primary.800" marginY={4}>
                 Welcome{" "}
-                <Text as="span" textAlign="center" color="secondary.400">
+                <Text as="span" textAlign="center" color="secondary.300">
                   {user.name}
                 </Text>
               </Heading>
               <Text
                 fontWeight="semibold"
-                color="gray.500"
+                color="primary.800"
                 fontSize="xl"
                 textAlign="center"
               >
                 Start by picking or making a new subject
               </Text>
-              <ChakraImage src={Image} alt="Welcome" boxSize="lg" />{" "}
+              <ChakraImage
+                src={Image}
+                alt="Welcome"
+                boxSize={{ base: "md", md: "lg" }}
+              />{" "}
             </>
           ) : (
             <Spinner />

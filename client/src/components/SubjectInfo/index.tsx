@@ -41,15 +41,16 @@ const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
       border="1px"
       borderColor="gray.200"
       padding={4}
-      direction="row"
+      direction={{ base: "column", md: "row" }}
       alignItems="center"
-      justifyContent="space-between"
+      justifyContent={{ base: "center", md: "space-between" }}
     >
       <Stack
         fontWeight="semibold"
         fontSize="lg"
-        textTransform="capitalize"
-        color="gray.500"
+        textTransform="uppercase"
+        color="primary.800"
+        textAlign={{ base: "center", md: "left" }}
       >
         <Text>
           Subject: <Text as="span">{selectedSubject[0].name}</Text>
@@ -58,7 +59,8 @@ const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
       </Stack>
       <Stack direction="row">
         <Button
-          bgColor="primary.600"
+          colorScheme="primary"
+          size="sm"
           leftIcon={<AiOutlineFileAdd />}
           onClick={() => {
             dispatch(resetSelectedResource);
@@ -68,7 +70,8 @@ const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
           New Resource
         </Button>
         <Button
-          bgColor="yellow.400"
+          bgColor="primary.400"
+          size="sm"
           leftIcon={<CgDanger />}
           onClick={() => onClickHandler(selectedSubject[0]._id)}
           disabled={subjectLoading}

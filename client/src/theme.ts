@@ -10,10 +10,10 @@ export default extendTheme({
     Button: {
       variants: {
         solid: (props) => ({
-          backgroundColor: `${props.colorScheme}.600`,
+          backgroundColor: `${props.colorScheme}.800`,
           color: "white",
           _hover: {
-            backgroundColor: `${props.colorScheme}.700`,
+            backgroundColor: `${props.colorScheme}.900`,
           },
         }),
       },

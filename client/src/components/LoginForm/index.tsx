@@ -38,10 +38,10 @@ const LoginForm: React.FC = () => {
       paddingY={8}
       paddingX={4}
       height="100%"
-      width={{ base: "375px", md: "400px" }}
+      width={{ base: "300px", md: "430px" }}
       margin="auto"
     >
-      <Heading marginY={8} size="lg" textAlign="center" color="primary.600">
+      <Heading marginY={8} size="lg" textAlign="center" color="primary.800">
         Log in to your account
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -81,9 +81,9 @@ const LoginForm: React.FC = () => {
             <Link
               as={RouterLink}
               fontWeight="semibold"
-              color="primary.600"
+              color="primary.800"
               _hover={{
-                color: "primary.700",
+                color: "primary.900",
               }}
               to="/register"
             >
