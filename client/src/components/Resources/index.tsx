@@ -11,7 +11,7 @@ const Resources: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   const { resources } = useSelector((state: RootStore) => state.resourceState);
 
   return (
-    <SimpleGrid minChildWidth="370px" spacing="30px">
+    <SimpleGrid minChildWidth="370px" spacing="30px" paddingY={4}>
       {resources.map((resource) => (
         <Resource
           key={resource._id}

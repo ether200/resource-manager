@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SubjectInfoWrapper = styled.div`
   width: 100%;
@@ -9,7 +9,6 @@ export const SubjectInfoWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--color-gray);
-  margin-bottom: 2rem;
 
   h4 {
     margin-bottom: 0;
