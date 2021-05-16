@@ -1,5 +1,4 @@
 import { extendTheme, theme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
 
 export default extendTheme({
   colors: {
@@ -16,6 +15,13 @@ export default extendTheme({
             backgroundColor: `${props.colorScheme}.900`,
           },
         }),
+      },
+      secondary: {
+        backgroundColor: "primary.400",
+        color: "white",
+        _hover: {
+          backgroundColor: "primary.500",
+        },
       },
     },
   },

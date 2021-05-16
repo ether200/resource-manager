@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { ModalProps } from "../../pages/Subjects";
 import { RootStore } from "../../redux/store";
-import { AppWrapper } from "./AppPage.styles";
 
 import ErrorPage from "../ErrorPage";
 import SubjectInfo from "../SubjectInfo";

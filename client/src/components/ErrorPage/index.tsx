@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { WelcomeWrapper } from "../WelcomePage/Welcome.styles";
-import Error from "../../images/error.svg";
+import { Link as RouterLink } from "react-router-dom";
+import ErrorImage from "../../images/error.svg";
 import { resetSelectedSubject } from "../../redux/actions/subjectActions";
 
 import {
@@ -11,6 +10,7 @@ import {
   Text,
   VStack,
   Box,
+  Link,
 } from "@chakra-ui/react";
 
 type Props = {
@@ -24,22 +24,36 @@ const ErrorPage: React.FC<Props> = ({ errorMessage }) => {
     <Box width="100%" flex={1} display="flex" alignItems="center">
       <Container maxW="container.xl" marginX="auto">
         <VStack>
-          <Heading size="2xl" color="primary.800" marginY={4}>
+          <Heading
+            size="2xl"
+            color="primary.800"
+            marginY={4}
+            textAlign="center"
+          >
             An error has ocurred
           </Heading>
-          <Link to="/subjects" onClick={() => dispatch(resetSelectedSubject)}>
+          <Link
+            as={RouterLink}
+            fontWeight="semibold"
+            color="primary.800"
+            _hover={{
+              color: "primary.900",
+            }}
+            to="/subjects"
+            onClick={() => dispatch(resetSelectedSubject)}
+          >
             Return to home
           </Link>
           <Text
             fontWeight="semibold"
-            color="primary.800"
             fontSize="xl"
             textAlign="center"
+            color="red.500"
           >
             {errorMessage}
           </Text>
           <ChakraImage
-            src={Error}
+            src={ErrorImage}
             alt="Error"
             boxSize={{ base: "md", md: "lg" }}
           />

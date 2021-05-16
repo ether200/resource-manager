@@ -30,9 +30,10 @@ const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
     error: err,
-    message: err.message,
+    message: "Something went very wrong!",
     stack: err.stack,
   });
+  console.log(err.message);
 };
 
 const sendErrorProd = (err, res) => {
@@ -53,11 +54,14 @@ const sendErrorProd = (err, res) => {
 
 const globalErrorHandler = (err, req, res, next) => {
   if (process.env.NODE_ENV === "development") {
-    sendErrorDev(err, res);
+    let error = { ...err };
+    error.statusCode = err.statusCode || 500;
+    error.status = err.status || "error";
+    sendErrorDev(error, res);
   } else if (process.env.NODE_ENV === "production") {
     let error = { ...err };
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || "error";
+    error.statusCode = err.statusCode || 500;
+    error.status = err.status || "error";
 
     if (error.name === "ValidationError") {
       handleValidationErrorMongo(res, error);

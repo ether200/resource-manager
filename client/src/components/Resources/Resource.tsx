@@ -5,8 +5,6 @@ import {
   deleteResource,
   selectResourceToEdit,
 } from "../../redux/actions/resourceActions";
-import { ResourceCard } from "./Resources.styles";
-import { EditIcon, TrashIcon } from "../../styles/Icons.Styles";
 
 import { HiHashtag } from "react-icons/hi";
 import { FiEdit, FiTrash } from "react-icons/fi";
@@ -115,12 +113,6 @@ const Resource: React.FC<Props> = ({
           />
         </Stack>
       </Stack>
-      {/* <button>
-            <EditIcon onClick={() => editHandler(_id)} />
-          </button>
-          <button onClick={() => deleteHandler(_id)}>
-            <TrashIcon />
-          </button> */}
     </Stack>
   );
 };

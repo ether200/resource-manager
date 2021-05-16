@@ -19,7 +19,10 @@ const Subject = ({ name, _id }: SubjectProps) => {
     <Button
       disabled={selectedSubject[0]?._id === _id}
       onClick={() => history.push(`/subjects/${_id}`)}
-      bgColor="secondary.400"
+      bgColor="primary.400"
+      _hover={{
+        backgroundColor: "primary.500",
+      }}
       variant="outline"
       leftIcon={<FaFolderOpen />}
       color="white"

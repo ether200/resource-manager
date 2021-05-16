@@ -5,7 +5,7 @@ import { SubjectInterface } from "../../redux/actions/subjectActionsTypes";
 import { RootStore } from "../../redux/store";
 import Subject from "./Subject";
 
-import { Heading, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 
 const Subjects = () => {
   const dispatch = useDispatch();

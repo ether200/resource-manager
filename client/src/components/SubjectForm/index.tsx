@@ -4,14 +4,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubjectSchema } from "../../yup";
 import { createSubject } from "../../redux/actions/subjectActions";
-import { ErrorIcon } from "../../styles/Icons.Styles";
-import { SubjectFormWrapper } from "./SubjectForm.styles";
 import { RootStore } from "../../redux/store";
 import FormInput from "../FormInput";
-import { Box, StackDivider, VStack } from "@chakra-ui/layout";
+import { VStack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import ErrorBadge from "../ErrorBadge";
-import { FormHelperText } from "@chakra-ui/form-control";
 
 type SubjectFormValues = {
   subjectName: string;

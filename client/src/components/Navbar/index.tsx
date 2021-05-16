@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { logoutUser } from "../../redux/actions/userActions";
@@ -17,7 +16,6 @@ import Sidebar from "../Sidebar";
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
-  const btnRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -42,6 +40,9 @@ const Navbar: React.FC = () => {
             bgColor="primary.400"
             onClick={onOpen}
             leftIcon={<FaFolderPlus />}
+            _hover={{
+              backgroundColor: "primary.500",
+            }}
           >
             Subjects
           </Button>

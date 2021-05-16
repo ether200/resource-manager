@@ -1,6 +1,5 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SubjectInfoWrapper } from "./SubjectInfo.styles";
 import { resetSelectedResource } from "../../redux/actions/resourceActions";
 import { deleteSubject } from "../../redux/actions/subjectActions";
 import { ModalProps } from "../../pages/Subjects";
@@ -8,7 +7,7 @@ import { RootStore } from "../../redux/store";
 import Swal from "sweetalert2";
 import moment from "moment";
 
-import { Stack, Box, Text, Button } from "@chakra-ui/react";
+import { Stack, Text, Button } from "@chakra-ui/react";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { CgDanger } from "react-icons/cg";
 
@@ -75,6 +74,9 @@ const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
           leftIcon={<CgDanger />}
           onClick={() => onClickHandler(selectedSubject[0]._id)}
           disabled={subjectLoading}
+          _hover={{
+            backgroundColor: "primary.500",
+          }}
         >
           Delete
         </Button>
