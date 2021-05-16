@@ -42,15 +42,6 @@ const Login: React.FC = () => {
         flex={{ base: "auto", md: 1 }}
         height={{ base: "100px", md: "100%" }}
       ></Box>
-      {/* <div className="hero">
-        <div className="welcome">
-          <h1>Welcome</h1>
-          <h4>
-            Do you have all of your educational resources all over the place?
-          </h4>
-          <h4>We got you!</h4>
-        </div>
-      </div> */}
     </Stack>
   );
 };

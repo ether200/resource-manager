@@ -27,7 +27,6 @@ const Navbar: React.FC = () => {
         alignItems="center"
         width="100%"
       >
-        {/* ADD NO ME LA CONTAINER */}
         <Container
           maxW="container.xl"
           height="100%"

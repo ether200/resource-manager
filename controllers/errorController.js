@@ -30,10 +30,9 @@ const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
     error: err,
-    message: "Something went very wrong!",
-    stack: err.stack,
+    message: err.message | "Something went very wrong!",
   });
-  console.log(err.message);
+  console.log(err);
 };
 
 const sendErrorProd = (err, res) => {

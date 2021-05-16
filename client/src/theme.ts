@@ -1,6 +1,11 @@
 import { extendTheme, theme } from "@chakra-ui/react";
 
 export default extendTheme({
+  fonts: {
+    body: "Nunito, sans-serif",
+    heading: "Montserrat, sans-serif",
+    mono: "Nunito, sans-serif",
+  },
   colors: {
     primary: theme.colors.twitter,
     secondary: theme.colors.yellow,

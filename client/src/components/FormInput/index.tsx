@@ -44,15 +44,6 @@ const FormInput: React.FC<InputProps> = ({
         {errors && errors.message}
       </FormErrorMessage>
     </FormControl>
-    // <div className='form-control'>
-    //   <label htmlFor={id}>{label}</label>
-    //   <input ref={register} id={id} {...inputProps} />
-    //   {errors && (
-    //     <span className='form-error'>
-    //       <ErrorIcon /> {errors.message}
-    //     </span>
-    //   )}
-    // </div>
   );
 };
 
