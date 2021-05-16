@@ -44,8 +44,8 @@ const Resource: React.FC<Props> = ({
       title: "Are you sure?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#ffc832",
-      cancelButtonColor: "#2d678c",
+      confirmButtonColor: "#136B9E",
+      cancelButtonColor: "#57BBF5",
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {

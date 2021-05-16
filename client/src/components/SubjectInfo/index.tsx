@@ -24,8 +24,8 @@ const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
       text: "All resources will be deleted!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#ffc832",
-      cancelButtonColor: "#2d678c",
+      confirmButtonColor: "#136B9E",
+      cancelButtonColor: "#57BBF5",
       confirmButtonText: "Yes, delete them!",
     }).then((result) => {
       if (result.isConfirmed) {
