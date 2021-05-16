@@ -4,8 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetUserErrors } from "../redux/actions/userActions";
 import { RootStore } from "../redux/store";
 
-import { RegisterWrapper } from "../styles/Register.styles";
+import Background from "../images/background.jpg";
+
 import RegisterForm from "../components/RegisterForm";
+
+import { Box } from "@chakra-ui/react";
 
 const Register: React.FC = () => {
   const history = useHistory();
@@ -23,9 +26,17 @@ const Register: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <RegisterWrapper>
+    <Box
+      height="100vh"
+      bgImage={`url(${Background})`}
+      bgPosition="cover"
+      bgRepeat="no-repeat"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
       <RegisterForm />
-    </RegisterWrapper>
+    </Box>
   );
 };
 
