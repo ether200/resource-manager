@@ -49,14 +49,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, onClose }) => {
               <Subjects />
             </>
           ) : (
-            <Box
-              height="100%"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Spinner />
-            </Box>
+            <Spinner />
           )}
         </DrawerBody>
       </DrawerContent>

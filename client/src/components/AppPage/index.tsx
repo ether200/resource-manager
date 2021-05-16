@@ -7,7 +7,7 @@ import SubjectInfo from "../SubjectInfo";
 import Resources from "../Resources";
 import Spinner from "../Spinner";
 
-import { Container, Stack, Box } from "@chakra-ui/react";
+import { Container, VStack, Box } from "@chakra-ui/react";
 
 const AppPage: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   const { selectedSubject, subjectLoading, subjectError } = useSelector(
@@ -19,26 +19,18 @@ const AppPage: React.FC<ModalProps> = ({ setIsModalOpen }) => {
 
   if (subjectError) return <ErrorPage errorMessage={subjectError} />;
   return (
-    <>
-      {!subjectLoading && !resourceLoading && selectedSubject.length > 0 ? (
-        <Stack width="100%" height="100%" paddingY={2} flex={1}>
-          <Container maxW="container.xl" marginX="auto">
+    <Box width="100%" paddingY={2} flex={1} display="flex" alignItems="center">
+      <Container maxW="container.xl" marginX="auto">
+        {!subjectLoading && !resourceLoading && selectedSubject.length > 0 ? (
+          <>
             <SubjectInfo setIsModalOpen={setIsModalOpen} />
             <Resources setIsModalOpen={setIsModalOpen} />
-          </Container>
-        </Stack>
-      ) : (
-        <Box
-          minHeight="100vh"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          width="100%"
-        >
+          </>
+        ) : (
           <Spinner />
-        </Box>
-      )}
-    </>
+        )}
+      </Container>
+    </Box>
   );
 };
 
