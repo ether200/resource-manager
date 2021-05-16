@@ -1,5 +1,5 @@
-import { createPortal } from 'react-dom';
-import { ModalWrapper } from './Modal.styles';
+import { createPortal } from "react-dom";
+import { Box } from "@chakra-ui/react";
 
 type Props = {
   children: JSX.Element;
@@ -11,9 +11,21 @@ const Modal: React.FC<Props> = ({ children, isModalOpen, setIsModalOpen }) => {
   if (!isModalOpen) return null;
 
   return createPortal(
-    <ModalWrapper onClick={() => setIsModalOpen(false)}>
+    <Box
+      sx={{
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        width: "100%",
+        minHeight: "100vh",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        display: "grid",
+        placeContent: "center",
+      }}
+      onClick={() => setIsModalOpen(false)}
+    >
       {children}
-    </ModalWrapper>,
+    </Box>,
     document.body
   );
 };
