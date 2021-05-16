@@ -20,6 +20,8 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
+import { motion } from "framer-motion";
+
 type Props = {
   _id: string;
   title: string;
@@ -64,6 +66,11 @@ const Resource: React.FC<Props> = ({
       boxShadow="xl"
       spacing={4}
       divider={<StackDivider />}
+      as={motion.div}
+      animate={{ scale: 1 }}
+      initial={{ scale: 0 }}
+      exit={{ scale: 0 }}
+      layoutId={_id}
     >
       <Box width="100%" height="280px">
         <ReactPlayer url={url} width="100%" height="100%" controls={true} />
@@ -78,16 +85,18 @@ const Resource: React.FC<Props> = ({
         width="100%"
       >
         <Box>
-          <Tag
-            size="md"
-            variant="subtle"
-            bgColor="primary.400"
-            color="white"
-            textTransform="uppercase"
-          >
-            <TagLeftIcon boxSize="14px" as={HiHashtag} />
-            <TagLabel>{tag}</TagLabel>
-          </Tag>
+          {tag && (
+            <Tag
+              size="md"
+              variant="subtle"
+              bgColor="primary.400"
+              color="white"
+              textTransform="uppercase"
+            >
+              <TagLeftIcon boxSize="14px" as={HiHashtag} />
+              <TagLabel>{tag}</TagLabel>
+            </Tag>
+          )}
         </Box>
         <Stack
           direction="row"

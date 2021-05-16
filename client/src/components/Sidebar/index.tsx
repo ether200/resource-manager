@@ -13,7 +13,6 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Heading,
-  Box,
 } from "@chakra-ui/react";
 
 type Props = {

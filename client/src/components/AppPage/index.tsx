@@ -7,7 +7,7 @@ import SubjectInfo from "../SubjectInfo";
 import Resources from "../Resources";
 import Spinner from "../Spinner";
 
-import { Container, VStack, Box } from "@chakra-ui/react";
+import { Container, Box } from "@chakra-ui/react";
 
 const AppPage: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   const { selectedSubject, subjectLoading, subjectError } = useSelector(
