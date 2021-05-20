@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { ModalProps } from "../../pages/Subjects";
 import { RootStore } from "../../redux/store";
-
-import { SimpleGrid } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 
+// Components
+import { SimpleGrid } from "@chakra-ui/react";
 import Resource from "./Resource";
 
 const Resources: React.FC<ModalProps> = ({ setIsModalOpen }) => {

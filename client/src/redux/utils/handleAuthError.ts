@@ -1,16 +1,18 @@
-import { Dispatch } from 'redux';
-import { USER_GET_FAIL } from '../actions/userActionsTypes';
+import { Dispatch } from "redux";
+
+import { USER_GET_FAIL } from "../actions/userActionsTypes";
+
 import {
   CREATE_SUBJECT_FAIL,
   GET_SUBJECT_FAIL,
   DELETE_SUBJECT_FAIL,
-} from '../actions/subjectActionsTypes';
+} from "../actions/subjectActionsTypes";
 
 import {
   CREATE_RESOURCE_FAIL,
   DELETE_RESOURCE_FAIL,
   EDIT_RESOURCE_FAIL,
-} from '../actions/resourceActionsTypes';
+} from "../actions/resourceActionsTypes";
 
 type ActionType =
   | typeof GET_SUBJECT_FAIL
@@ -31,6 +33,7 @@ interface ErrorInterface {
   };
 }
 
+// FN to dispatch an action when there's an Auth error, making the user to log out afterwards
 const handleAuthError = (
   error: ErrorInterface,
   actionType: ActionType,

@@ -1,3 +1,8 @@
+import { Dispatch } from "redux";
+import axiosConfig from "../../config/axiosConfig";
+import authConfig from "../../config/authConfig";
+import handleAuthError from "../utils/handleAuthError";
+
 import {
   CREATE_SUBJECT_REQUEST,
   CREATE_SUBJECT_SUCCESS,
@@ -22,11 +27,6 @@ import {
 } from "./resourceActionsTypes";
 
 import { USER_GET_FAIL } from "./userActionsTypes";
-
-import { Dispatch } from "redux";
-import axiosConfig from "../../config/axiosConfig";
-import authConfig from "../../config/authConfig";
-import handleAuthError from "../utils/handleAuthError";
 
 type Subject = {
   name: string;

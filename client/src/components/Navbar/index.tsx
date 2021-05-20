@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
+import { FaFolderPlus } from "react-icons/fa";
+
+// Action creators
 import { logoutUser } from "../../redux/actions/userActions";
 import { resetSelectedSubject } from "../../redux/actions/subjectActions";
 
-import { FaFolderPlus } from "react-icons/fa";
-
+// Components
 import {
   Stack,
   Button,

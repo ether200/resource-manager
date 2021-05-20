@@ -1,15 +1,18 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { resetSelectedResource } from "../../redux/actions/resourceActions";
-import { deleteSubject } from "../../redux/actions/subjectActions";
 import { ModalProps } from "../../pages/Subjects";
 import { RootStore } from "../../redux/store";
+import { AiOutlineFileAdd } from "react-icons/ai";
+import { CgDanger } from "react-icons/cg";
 import Swal from "sweetalert2";
 import moment from "moment";
 
+// Action creators
+import { resetSelectedResource } from "../../redux/actions/resourceActions";
+import { deleteSubject } from "../../redux/actions/subjectActions";
+
+// Components
 import { Stack, Text, Button } from "@chakra-ui/react";
-import { AiOutlineFileAdd } from "react-icons/ai";
-import { CgDanger } from "react-icons/cg";
 
 const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   const history = useHistory();
@@ -19,6 +22,7 @@ const SubjectInfo: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   );
 
   const onClickHandler = (id: string) => {
+    // Fire popup
     Swal.fire({
       title: "Are you sure?",
       text: "All resources will be deleted!",

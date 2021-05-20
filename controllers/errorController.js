@@ -1,5 +1,6 @@
 const ApiError = require("../utils/ApiError");
 
+// Error handler for validation
 const handleValidationErrorMongo = (res, err) => {
   const errors = Object.values(err.errors).map((el) => ({
     field: el.name,
@@ -9,17 +10,21 @@ const handleValidationErrorMongo = (res, err) => {
   return res.status(400).json(errors);
 };
 
+// Error handler for wrong ID values
 const handleCastErrorMongo = (err) => {
   const message = `No element found with the id: ${err.value}. Please use a valid one.`;
   return new ApiError(message, 400);
 };
 
+// Error handler for invalid token
 const handleJWTError = () =>
   new ApiError("Invalid token. Please log in again!", 401);
 
+// Error handler for expired token
 const handleJWTExpiredError = () =>
   new ApiError("Your session has expired! Please log in again.", 401);
 
+// Error handler for duplicated unique values
 const handleDuplicateFieldsMongo = (err) => {
   const value = Object.values(err.keyValue);
   const message = `The email: ${value} is already in use. Please use another one.`;

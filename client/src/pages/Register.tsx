@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { resetUserErrors } from "../redux/actions/userActions";
 import { RootStore } from "../redux/store";
 
-import Background from "../images/background.jpg";
+// Action creators
+import { resetUserErrors } from "../redux/actions/userActions";
 
+// Components
 import RegisterForm from "../components/RegisterForm";
-
+import Background from "../images/background.jpg";
 import { Box } from "@chakra-ui/react";
 
 const Register: React.FC = () => {
@@ -16,12 +17,14 @@ const Register: React.FC = () => {
   const { authorized } = useSelector((state: RootStore) => state.userState);
 
   useEffect(() => {
+    // Redirect to main page when validated
     if (authorized) {
       history.push("/subjects");
     }
   }, [authorized, history]);
 
   useEffect(() => {
+    // Reset errors on render
     dispatch(resetUserErrors);
   }, [dispatch]);
 

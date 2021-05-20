@@ -1,3 +1,4 @@
+// Extend Error object and modify it
 class ApiError extends Error {
   constructor(message, statusCode) {
     super(message);

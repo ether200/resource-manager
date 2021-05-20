@@ -1,15 +1,17 @@
-import { Stack, Box } from "@chakra-ui/react";
-import Background from "../images/background.jpg";
-
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { RootStore } from "../redux/store";
+
+// Action creators
 import { resetUserErrors } from "../redux/actions/userActions";
 import { resetSubjectState } from "../redux/actions/subjectActions";
 import { resetResourceState } from "../redux/actions/resourceActions";
-import { RootStore } from "../redux/store";
 
+// Components
 import LoginForm from "../components/LoginForm";
+import Background from "../images/background.jpg";
+import { Stack, Box } from "@chakra-ui/react";
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -17,12 +19,14 @@ const Login: React.FC = () => {
   const { authorized } = useSelector((state: RootStore) => state.userState);
 
   useEffect(() => {
+    // Redirect to main page when validated
     if (authorized) {
       history.push("/subjects");
     }
   }, [authorized, history]);
 
   useEffect(() => {
+    // Reset errors on render
     dispatch(resetUserErrors);
     dispatch(resetSubjectState);
     dispatch(resetResourceState);

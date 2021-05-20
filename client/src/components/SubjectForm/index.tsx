@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubjectSchema } from "../../yup";
-import { createSubject } from "../../redux/actions/subjectActions";
 import { RootStore } from "../../redux/store";
+
+// Action creators
+import { createSubject } from "../../redux/actions/subjectActions";
+
+// Components
 import FormInput from "../FormInput";
-import { VStack } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
 import ErrorBadge from "../ErrorBadge";
+import { VStack, Button } from "@chakra-ui/react";
 
 type SubjectFormValues = {
   subjectName: string;

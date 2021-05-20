@@ -1,3 +1,9 @@
+import axiosConfig from "../../config/axiosConfig";
+import authConfig from "../../config/authConfig";
+import { Dispatch } from "redux";
+import { LogFormValues } from "../../components/LoginForm";
+import { RegisterFormValues } from "../../components/RegisterForm";
+
 import {
   USER_REGISTER_LOG_REQUEST,
   USER_REGISTER_LOG_SUCCESS,
@@ -8,39 +14,34 @@ import {
   USER_LOGOUT_RESET,
   USER_ERRORS_RESET,
   UserDispatchTypes,
-} from './userActionsTypes';
-
-import { Dispatch } from 'redux';
-import { LogFormValues } from '../../components/LoginForm';
-import { RegisterFormValues } from '../../components/RegisterForm';
-import axiosConfig from '../../config/axiosConfig';
-import authConfig from '../../config/authConfig';
+} from "./userActionsTypes";
 
 type DataValues = LogFormValues | RegisterFormValues;
 
-export const registerLogUser = (type: string, data: DataValues) => async (
-  dispatch: Dispatch<UserDispatchTypes>
-) => {
-  try {
-    dispatch({
-      type: USER_REGISTER_LOG_REQUEST,
-    });
-    const response = await axiosConfig.post(`/api/users/${type}`, data);
-    sessionStorage.setItem('token', response.data.token);
-    dispatch({
-      type: USER_REGISTER_LOG_SUCCESS,
-      payload: response.data.data.user,
-    });
-  } catch (error) {
-    dispatch({
-      type: USER_REGISTER_LOG_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+// Dispatch an user action depending of type which can be register or login
+export const registerLogUser =
+  (type: string, data: DataValues) =>
+  async (dispatch: Dispatch<UserDispatchTypes>) => {
+    try {
+      dispatch({
+        type: USER_REGISTER_LOG_REQUEST,
+      });
+      const response = await axiosConfig.post(`/api/users/${type}`, data);
+      sessionStorage.setItem("token", response.data.token);
+      dispatch({
+        type: USER_REGISTER_LOG_SUCCESS,
+        payload: response.data.data.user,
+      });
+    } catch (error) {
+      dispatch({
+        type: USER_REGISTER_LOG_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const getUser = async (dispatch: Dispatch<UserDispatchTypes>) => {
   try {
@@ -66,7 +67,7 @@ export const getUser = async (dispatch: Dispatch<UserDispatchTypes>) => {
 };
 
 export const logoutUser = (dispatch: Dispatch<UserDispatchTypes>) => {
-  sessionStorage.removeItem('token');
+  sessionStorage.removeItem("token");
   dispatch({
     type: USER_LOGOUT_RESET,
   });

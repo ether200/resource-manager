@@ -4,12 +4,14 @@ const jwt = require("jsonwebtoken");
 const catchAsyncError = require("../utils/catchAsyncError");
 const bcrypt = require("bcryptjs");
 
+// Fn to sign token
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "3h",
   });
 };
 
+// Fn to create token and send response
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
   user.password = undefined;
@@ -22,6 +24,7 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 
+// Fn to compare request password and the crypted one from db
 const comparePassword = async (hatchedPassword, userPassword) => {
   return await bcrypt.compare(userPassword, hatchedPassword);
 };

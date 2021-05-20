@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { RootStore } from "../../redux/store";
 
+// Components
 import Spinner from "../Spinner";
 import SubjectForm from "../SubjectForm";
 import Subjects from "../Subjects";
-
 import {
   Drawer,
   DrawerBody,

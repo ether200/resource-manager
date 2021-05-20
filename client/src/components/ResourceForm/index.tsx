@@ -2,14 +2,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ResourceSchema } from "../../yup";
+import { ModalProps } from "../../pages/Subjects";
+import { RootStore } from "../../redux/store";
+
+// Action creators
 import {
   createResource,
   editResource,
 } from "../../redux/actions/resourceActions";
-import { ModalProps } from "../../pages/Subjects";
-import { RootStore } from "../../redux/store";
-import FormInput from "../FormInput";
 
+// Components
+import FormInput from "../FormInput";
 import { Box, Heading, VStack, Button } from "@chakra-ui/react";
 
 export interface ResourceFormValues {
@@ -26,6 +29,8 @@ const ResourceForm: React.FC<ModalProps> = ({ setIsModalOpen }) => {
   const { selectedResource } = useSelector(
     (state: RootStore) => state.resourceState
   );
+
+  // Define the action the form will take
   const action =
     selectedResource.length === 0
       ? { title: "Create new resource", action: "Create" }

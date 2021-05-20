@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RootStore } from "../../redux/store";
+
+// Action creators
 import { getAllSubjects } from "../../redux/actions/subjectActions";
 import { SubjectInterface } from "../../redux/actions/subjectActionsTypes";
-import { RootStore } from "../../redux/store";
-import Subject from "./Subject";
 
+// Components
 import { VStack } from "@chakra-ui/react";
+import Subject from "./Subject";
 
 const Subjects = () => {
   const dispatch = useDispatch();

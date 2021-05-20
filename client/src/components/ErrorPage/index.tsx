@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
-import ErrorImage from "../../images/error.svg";
+
+// Action creators
 import { resetSelectedSubject } from "../../redux/actions/subjectActions";
 
+// Components
+import ErrorImage from "../../images/error.svg";
 import {
   Container,
   Image as ChakraImage,

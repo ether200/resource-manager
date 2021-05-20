@@ -1,14 +1,17 @@
+import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import { HiHashtag } from "react-icons/hi";
+import { FiEdit, FiTrash } from "react-icons/fi";
 import ReactPlayer from "react-player";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
+
+// Action creators
 import {
   deleteResource,
   selectResourceToEdit,
 } from "../../redux/actions/resourceActions";
 
-import { HiHashtag } from "react-icons/hi";
-import { FiEdit, FiTrash } from "react-icons/fi";
-
+// Components
 import {
   Box,
   Tag,
@@ -19,8 +22,6 @@ import {
   StackDivider,
   Heading,
 } from "@chakra-ui/react";
-
-import { motion } from "framer-motion";
 
 type Props = {
   _id: string;
@@ -40,6 +41,7 @@ const Resource: React.FC<Props> = ({
   const dispatch = useDispatch();
 
   const deleteHandler = (resourceId: string) => {
+    // Fire pop
     Swal.fire({
       title: "Are you sure?",
       icon: "warning",

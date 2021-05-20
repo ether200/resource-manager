@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Route,
   Redirect,
   RouteProps,
   RouteComponentProps,
-} from 'react-router-dom';
-import { getUser } from '../../redux/actions/userActions';
-import { RootStore } from '../../redux/store';
+} from "react-router-dom";
+import { RootStore } from "../../redux/store";
+
+// Action creators
+import { getUser } from "../../redux/actions/userActions";
 
 const PrivateRoute: React.FC<RouteProps> = ({
   component: Component,
@@ -24,11 +26,12 @@ const PrivateRoute: React.FC<RouteProps> = ({
     }
   }, [authorized, dispatch]);
 
+  // If there's an authError like being not authorized redirect to login page
   return (
     <Route
       {...props}
       render={(props: RouteComponentProps) =>
-        authError ? <Redirect to='/' /> : Component && <Component {...props} />
+        authError ? <Redirect to="/" /> : Component && <Component {...props} />
       }
     />
   );

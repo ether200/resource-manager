@@ -27,6 +27,7 @@ const userSchema = mongoose.Schema(
   }
 );
 
+// Generate salt and hash password before saving in the db
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();

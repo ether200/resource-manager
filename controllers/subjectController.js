@@ -3,6 +3,7 @@ const Resource = require("../models/ResourceModel");
 const ApiError = require("../utils/ApiError");
 const catchAsyncError = require("../utils/catchAsyncError");
 
+// Fn to evaluate if there's a subject with such name
 const subjectExist = async (fieldValue, userId) => {
   return await Subject.find({
     creator: userId,

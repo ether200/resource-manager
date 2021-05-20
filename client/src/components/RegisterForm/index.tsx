@@ -3,14 +3,15 @@ import { Link as RouterLink } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterSchema } from "../../yup";
+import { RootStore } from "../../redux/store";
 
+// Action creators
 import { registerLogUser } from "../../redux/actions/userActions";
 
-import { RootStore } from "../../redux/store";
-import FormInput from "../FormInput";
-
+// Components
 import { Box, Heading, VStack, Button, Text, Link } from "@chakra-ui/react";
 import ErrorBadge from "../ErrorBadge";
+import FormInput from "../FormInput";
 
 export type RegisterFormValues = {
   name: string;

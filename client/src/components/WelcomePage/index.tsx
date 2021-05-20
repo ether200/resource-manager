@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootStore } from "../../redux/store";
+
+// Components
 import Image from "../../images/home.svg";
 import Spinner from "../Spinner";
-
 import {
   Container,
   Image as ChakraImage,

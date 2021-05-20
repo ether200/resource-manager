@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
 
+// Components
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Subjects from "./pages/Subjects";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
+          {/* High order component */}
           <PrivateRoute
             exact={true}
             path="/subjects/:id?"

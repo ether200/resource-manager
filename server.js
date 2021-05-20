@@ -2,11 +2,13 @@ const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const connectDatabase = require("./config/database");
+
 const globalErrorHandler = require("./controllers/errorController");
+
 const userRouter = require("./routes/userRouter");
 const subjectRouter = require("./routes/subjectRouter");
 const resourceRouter = require("./routes/resourceRouter");
-const connectDatabase = require("./config/database");
 
 dotenv.config();
 connectDatabase();
@@ -18,6 +20,7 @@ app.use("/api/users", userRouter);
 app.use("/api/subjects", subjectRouter);
 app.use("/api/resources", resourceRouter);
 
+// Error middleware
 app.use(globalErrorHandler);
 
 if (process.env.NODE_ENV === "production") {
